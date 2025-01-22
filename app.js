@@ -40,4 +40,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // 2 - ghost-lair
     // 3 - power-pellet
     // 4 - empty
+
+    // create board
+    function createBoard() {
+        for (let i = 0; i < layout.length; i++) {
+            const square = document.createElement('div');
+            grid.appendChild(square);
+        }
+    }
+
+    createBoard();
 });
