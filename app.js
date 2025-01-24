@@ -78,15 +78,41 @@ document.addEventListener('DOMContentLoaded', function() {
         squares[pacmanCurrentIndex].classList.remove('pacman');
         switch (e.key) {
             case 'ArrowLeft':
+                if (
+                    pacmanCurrentIndex % width !== 0 &&
+                    !squares[pacmanCurrentIndex - 1].classList.contains('wall') &&
+                    !squares[pacmanCurrentIndex - 1].classList.contains('ghost-lair')
+                )
                 pacmanCurrentIndex -= 1;
+                if (squares[pacmanCurrentIndex - 1] === squares[363]) {
+                    pacmanCurrentIndex = 391;
+                }
                 break;
             case 'ArrowRight':
+                if (
+                    pacmanCurrentIndex % width < width - 1 &&
+                    !squares[pacmanCurrentIndex + 1].classList.contains('wall') &&
+                    !squares[pacmanCurrentIndex + 1].classList.contains('ghost-lair')
+                )
                 pacmanCurrentIndex += 1;
+                if (squares[pacmanCurrentIndex + 1] === squares[392]) {
+                    pacmanCurrentIndex = 364;
+                }
                 break;
             case 'ArrowUp':
+                if (
+                    pacmanCurrentIndex - width >= 0 &&
+                    !squares[pacmanCurrentIndex - width].classList.contains('wall') &&
+                    !squares[pacmanCurrentIndex - width].classList.contains('ghost-lair')
+                )
                 pacmanCurrentIndex -= width;
                 break;
             case 'ArrowDown':
+                if (
+                    pacmanCurrentIndex + width < width * width &&
+                    !squares[pacmanCurrentIndex + width].classList.contains('wall') &&
+                    !squares[pacmanCurrentIndex + width].classList.contains('ghost-lair')
+                )
                 pacmanCurrentIndex += width;
         }
         squares[pacmanCurrentIndex].classList.add('pacman');
