@@ -67,4 +67,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     createBoard();
+
+    // create Characters
+    // draw pacman onto the board
+    let pacmanCurrentIndex = 490;
+    squares[pacmanCurrentIndex].classList.add('pacman');
+
+    // move pacman
+    function movePacman(e) {
+        squares[pacmanCurrentIndex].classList.remove('pacman');
+        switch (e.key) {
+            case 'ArrowLeft':
+                pacmanCurrentIndex -= 1;
+                break;
+            case 'ArrowRight':
+                pacmanCurrentIndex += 1;
+                break;
+            case 'ArrowUp':
+                pacmanCurrentIndex -= width;
+                break;
+            case 'ArrowDown':
+                pacmanCurrentIndex += width;
+        }
+        squares[pacmanCurrentIndex].classList.add('pacman');
+    };
+    document.addEventListener('keyup', movePacman);
 });
